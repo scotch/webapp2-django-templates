@@ -3,11 +3,9 @@ import datetime
 import webapp2
 from django.template import loader
 
-
 class BaseHandler(webapp2.RequestHandler):
     def render_to_response(self, template_name, template_values):
-        path = os.path.join(os.path.dirname(__file__), 'templates', template_name)
-        self.response.write(loader.render_to_string(path, template_values))
+        self.response.write(loader.render_to_string(template_name, template_values))
 
 class PageHandler(BaseHandler):
     def root(self):
